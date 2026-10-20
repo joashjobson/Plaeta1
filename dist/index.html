@@ -1,21 +1,252 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-AU">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Plaeta</title>
-<meta name="description" content="Plaeta: study for your final exams. AI marking, a mistake logbook and a daily plan, one planet per subject.">
-<meta name="application-name" content="Plaeta">
-<meta name="theme-color" content="#F7F6F3" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#191918" media="(prefers-color-scheme: dark)">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://generativelanguage.googleapis.com; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'">
-<meta name="referrer" content="no-referrer">
-<link rel="icon" type="image/svg+xml" href="/icon.svg">
-  <script type="module" crossorigin src="/assets/index-BUu1H004.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CjNXsddy.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plaeta, a study partner for high school</title>
+<meta name="description" content="Upload your syllabus and past papers. Plaeta turns them into practice, marks your answers against your own marking guidelines, and shows you what to study next.">
+<meta property="og:title" content="Plaeta, a study partner for high school">
+<meta property="og:description" content="Your syllabus, your past papers, marked answers and a clear plan for Years 11 and 12.">
+<meta name="theme-color" content="#FBFAF7">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="preload" as="image" href="planet-hero.png">
 </head>
 <body>
-<div class="app" id="app"><p style="padding:24px;font-family:system-ui,sans-serif">Loading Plaeta…</p></div>
-<noscript><p style="padding:24px">Plaeta needs JavaScript to run.</p></noscript>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Plaeta home"><img class="mark" src="favicon.svg" alt=""><img class="wm" src="wordmark.svg" alt="Plaeta"></a>
+    <nav class="links" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="/app/" data-app>Open the app</a>
+    </nav>
+    <a class="btn btn-primary" href="start.html">Get started</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="stars" data-n="34" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow reveal">For Years 11 and 12</div>
+      <h1 class="reveal d1">A study partner<br>for <em class="it">high school.</em></h1>
+      <p class="lede reveal d2">Upload your syllabus and past papers. Plaeta turns them into practice, marks every answer against the marking guidelines you upload, and shows you exactly what to study next.</p>
+      <div class="ctas reveal d3">
+        <a class="btn btn-primary" href="start.html">Get started <span class="arr">&rarr;</span></a>
+        <a class="btn btn-ghost" href="#pricing">See plans</a>
+      </div>
+      <div class="note reveal d3"><span>Bring your own syllabus</span><span>Your papers stay private</span><span>Cancel any time</span></div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <svg class="orbit" viewBox="0 0 100 100"><g transform="rotate(-18 50 50)"><ellipse cx="50" cy="50" rx="47" ry="13"/><ellipse class="o2" cx="50" cy="50" rx="38" ry="9"/></g></svg>
+      <div class="halo"></div>
+      <div class="sprite hero-planet" style="z-index:2"></div>
+      <svg class="orbit front" viewBox="0 0 100 100"><defs><clipPath id="ringfront"><rect x="0" y="50" width="100" height="50"/></clipPath></defs><g transform="rotate(-18 50 50)"><ellipse cx="50" cy="50" rx="47" ry="13" clip-path="url(#ringfront)"/><ellipse class="o2" cx="50" cy="50" rx="38" ry="9" clip-path="url(#ringfront)"/></g></svg>
+      <div class="moon" data-rx=".47" data-ry=".13" data-speed=".22" data-phase="0.6"><div class="sprite xs p-gj"></div></div>
+      <div class="moon" data-rx=".38" data-ry=".09" data-speed="-.31" data-phase="3.4"><div class="sprite xs p-io" style="--s:.7"></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="dither" aria-hidden="true"></div>
+
+<section class="sec tint" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow reveal">How it works</div>
+      <h2 class="reveal d1">Your course, <em class="it">your papers,</em> one clear plan.</h2>
+      <p class="lede reveal d2">Plaeta does not come loaded with someone else's notes. It learns your course from the documents you already have.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal d1">
+        <div class="num">01</div>
+        <h3>Add your subjects and syllabus</h3>
+        <p>Upload the syllabus for each subject. Plaeta lists its topics and dot points so you can tick them off as you learn them.</p>
+      </div>
+      <div class="step reveal d2">
+        <div class="num">02</div>
+        <h3>Upload past papers</h3>
+        <p>Drag in a paper with its marking guidelines or solutions. Every question is read, sorted into topics and ready to practise.</p>
+      </div>
+      <div class="step reveal d3">
+        <div class="num">03</div>
+        <h3>Answer, get marked, improve</h3>
+        <p>Type or photograph your answer. You get a mark against the criteria, clear feedback, and the topics to work on next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dither down" aria-hidden="true"></div>
+
+<section class="sec" id="marking">
+  <div class="wrap split">
+    <div>
+      <div class="eyebrow reveal">Marking you can check</div>
+      <h2 class="reveal d1">Feedback that shows <em class="it">where the marks went.</em></h2>
+      <p class="lede reveal d2">Each answer is marked against the guidelines that came with the paper, criterion by criterion, so you can see what earned marks and what was missing.</p>
+      <ul class="ticks reveal d3">
+        <li><span><b>Every question can be marked.</b> No caps per paper.</span></li>
+        <li><span><b>Clearly labelled as AI.</b> Check it against your criteria, and ask your teacher when unsure.</span></li>
+        <li><span><b>Mistakes become practice.</b> Weak topics feed your flashcards and your study plan.</span></li>
+      </ul>
+    </div>
+    <div class="card-ui reveal d2" id="demo" aria-label="Example of a marked answer">
+      <div class="bar"><div class="sprite xs p-titan" style="--s:.42"></div><b>Modern History</b><span class="tag">Practice paper · Q14</span></div>
+      <div class="body">
+        <div class="q">Question 14 · 4 marks</div>
+        <p class="qtext">Explain two causes of the economic collapse described in Source B.</p>
+        <div class="ans"><span class="ln">Source B shows that falling crop prices left farmers unable to repay loans, which caused rural banks to fail…</span></div>
+        <div class="crit">
+          <div class="row"><span>Identifies two relevant causes</span><span class="m">2 / 2</span><div class="meter"><i style="--v:100%"></i></div></div>
+          <div class="row"><span>Explains each with evidence from the source</span><span class="m">1 / 2</span><div class="meter"><i class="part" style="--v:50%"></i></div></div>
+        </div>
+        <div class="total"><span class="big">3</span><span class="muted">out of 4</span><span class="ai">AI-marked</span></div>
+        <div class="fb"><b>To get the last mark:</b> link your second cause to a detail in the source, such as the figures for bank closures.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec tint" id="subjects">
+  <div class="stars" data-n="18" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow reveal">Built for each subject</div>
+      <h2 class="reveal d1">Every subject studies <em class="it">differently.</em></h2>
+      <p class="lede reveal d2 center">Plaeta sets up each subject for how it is examined, so maths feels like maths and English feels like English.</p>
+    </div>
+    <div class="presets">
+      <div class="preset reveal d1" style="--acc:var(--blue)">
+        <div class="sprite sm p-europa" style="--s:1"></div>
+        <h3>Maths</h3><p class="who">Standard, Advanced and beyond</p>
+        <ul><li>Marks your working, step by step</li><li>Formula sheets kept by topic</li><li>Similar questions to retry</li></ul>
+      </div>
+      <div class="preset reveal d2" style="--acc:var(--rose)">
+        <div class="sprite sm p-gj" style="--s:1"></div>
+        <h3>English</h3><p class="who">Standard, Advanced and more</p>
+        <ul><li>Essay lab and essay planner</li><li>Quote bank and notes for your texts</li><li>Question maker for any module</li></ul>
+      </div>
+      <div class="preset reveal d3" style="--acc:var(--amber)">
+        <div class="sprite sm p-titan" style="--s:1"></div>
+        <h3>Humanities</h3><p class="who">History, Business, Religion</p>
+        <ul><li>Source analysis practice</li><li>Extended responses marked to criteria</li><li>Case studies and key terms</li></ul>
+      </div>
+      <div class="preset reveal d3" style="--acc:var(--ember)">
+        <div class="sprite sm p-cnc" style="--s:1"></div>
+        <h3>Sciences</h3><p class="who">Biology, Chemistry, Health</p>
+        <ul><li>Calculations and data questions</li><li>Explanations marked for key ideas</li><li>Practicals and depth studies</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="worlds">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow reveal">See your progress</div>
+      <h2 class="reveal d1">Each subject is <em class="it">its own world.</em></h2>
+      <p class="lede reveal d2 center">Your subjects appear as planets modelled on real places in space. As you master each part of the syllabus, landmarks rise on its surface, so you can see at a glance where you are strong and where to go next.</p>
+    </div>
+    <div class="worlds">
+      <div class="world reveal d1"><div class="sprite sm p-io"></div><span class="nm">Io</span><span class="wh">A moon of Jupiter</span></div>
+      <div class="world reveal d1"><div class="sprite sm p-europa" style="--dur:11s"></div><span class="nm">Europa</span><span class="wh">A moon of Jupiter</span></div>
+      <div class="world reveal d2"><div class="sprite sm p-titan" style="--dur:10s"></div><span class="nm">Titan</span><span class="wh">The largest moon of Saturn</span></div>
+      <div class="world reveal d2"><div class="sprite sm p-pluto" style="--dur:12s"></div><span class="nm">Pluto</span><span class="wh">A dwarf planet</span></div>
+      <div class="world reveal d3"><div class="sprite sm p-kepler" style="--dur:14s"></div><span class="nm">Kepler-16b</span><span class="wh">A planet with two suns</span></div>
+      <div class="world reveal d3"><div class="sprite sm p-gj" style="--dur:10s"></div><span class="nm">GJ 504 b</span><span class="wh">A young giant planet</span></div>
+      <div class="world reveal d3"><div class="sprite sm p-cnc" style="--dur:8s"></div><span class="nm">55 Cancri e</span><span class="wh">A world of lava seas</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="dither" aria-hidden="true"></div>
+
+<section class="sec tint" id="privacy">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow reveal">Privacy by design</div>
+      <h2 class="reveal d1">Your work stays <em class="it">yours.</em></h2>
+      <p class="lede reveal d2">What you upload is only ever visible to you. It is never shared with other students, sold, or used to train AI.</p>
+    </div>
+    <div class="promise reveal d2">
+      <div><div class="k">You</div><b>Private to you</b><p>Nothing you upload is shown to anyone else.</p></div>
+      <div><div class="k"><span data-cfg="paperDays">60</span>d</div><b>Papers auto-delete</b><p>Uploaded papers are removed after <span data-cfg="paperDays">60</span> days. Your marks, notes and progress stay.</p></div>
+      <div><div class="k">0</div><b>No ads, no selling</b><p>We never show advertising or sell your information.</p></div>
+      <div><div class="k">AU</div><b>Stored in Australia</b><p>Accounts and study data are kept in Sydney.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="dither down" aria-hidden="true"></div>
+
+<section class="sec" id="pricing">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow reveal">Pricing</div>
+      <h2 class="reveal d1">Simple monthly plans.</h2>
+      <p class="lede reveal d2 center">Every plan has every feature. Plans differ only in how many past papers you can upload each month.</p>
+    </div>
+    <div class="plans" id="plans"></div>
+    <p class="fine reveal">Prices in Australian dollars, billed monthly. Pause or cancel any time from Settings. A paper counts when you upload it.</p>
+  </div>
+</section>
+
+<section class="sec tint" id="faq">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow reveal">Questions</div>
+      <h2 class="reveal d1">Good to know.</h2>
+    </div>
+    <div class="faq reveal d2">
+      <details><summary>Which courses does Plaeta work with?</summary><div class="a">Any Year 11 and 12 course with a syllabus and past papers. You upload your own syllabus, so Plaeta follows exactly what your course covers, whichever state you study in.</div></details>
+      <details><summary>Does Plaeta come with past papers?</summary><div class="a">No. You upload the papers you have, from your teachers, your school or your own collection, along with their marking guidelines or solutions. Plaeta marks against those.</div></details>
+      <details><summary>What counts as a paper?</summary><div class="a">One uploaded exam or practice paper counts as one paper, at the moment you upload it. Every question in it can be marked, as many times as you like.</div></details>
+      <details><summary>What happens to my papers after <span data-cfg="paperDays">60</span> days?</summary><div class="a">The paper file and its question text are deleted automatically. Your own answers, marks, feedback, flashcards and progress stay in your account.</div></details>
+      <details><summary>Can AI marking be wrong?</summary><div class="a">Yes, sometimes. Every AI mark is labelled, and it is always measured against the criteria you uploaded. Use it to practise and check it against your criteria. Your teacher's marks always come first.</div></details>
+      <details><summary>Who can sign up?</summary><div class="a">Plaeta is made for students aged about 16 to 18. You enter your date of birth when you sign up. If you are under 18, a parent or carer should read the terms with you and look after payment.</div></details>
+      <details><summary>Can I cancel?</summary><div class="a">Yes, in one step from Settings. You can also pause your plan for up to two months and keep everything. Before you cancel, you can download all your data.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="stars" data-n="22" aria-hidden="true"></div>
+  <div class="float a bob" aria-hidden="true"><div class="sprite sm p-kepler" style="--s:1"></div></div>
+  <div class="float b bob" style="animation-delay:-3s" aria-hidden="true"><div class="sprite sm p-pluto" style="--s:1.4"></div></div>
+  <div class="wrap">
+    <h2 class="reveal">Start with <em class="it">one paper.</em></h2>
+    <p class="lede reveal d1">Add a subject, upload a past paper, and see where your marks are coming from.</p>
+    <div class="row reveal d2"><a class="btn btn-primary" href="start.html">Get started <span class="arr">&rarr;</span></a><a class="btn btn-ghost" href="#pricing">Compare plans</a></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><a class="brand" href="index.html" aria-label="Plaeta home"><img class="mark" src="favicon.svg" alt="" style="width:26px;height:26px"><img class="wm" src="wordmark.svg" alt="Plaeta" style="height:19px"></a><p class="tag">A study partner for high school. Made in Australia.</p></div>
+      <div><h4>Product</h4><a href="#how">How it works</a><a href="#subjects">Subjects</a><a href="#pricing">Pricing</a><a href="#" data-app>Open the app</a></div>
+      <div><h4>Legal</h4><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of use</a><a href="terms.html#billing">Billing and refunds</a></div>
+      <div><h4>Contact</h4><a href="mailto:hello@example.com" data-cfg="contactEmail">hello@example.com</a><a href="privacy.html#report">Report a problem</a></div>
+    </div>
+    <div class="base"><span>&copy; <span id="year">2026</span> <span data-cfg="businessName">Plaeta</span></span><span>If you are in danger, call 000. Kids Helpline 1800 55 1800.</span></div>
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="site.js"></script>
 </body>
 </html>
