@@ -1,0 +1,7 @@
+# Cloudflare Pages settings. The site in dist/ is already built, so Cloudflare has nothing to compile:
+# it publishes dist/ and turns functions/api/* into the server addresses /api/<name>.
+# Keys and other settings go in the Cloudflare dashboard, never in this file.
+name = "plaeta"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
