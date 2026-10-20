@@ -689,7 +689,7 @@ var TOPICS_FROM_SYLLABUS_default = {
         "- areas: the main content areas or modules in the order the syllabus gives them. Each has a short key (lower-case letters, digits and dashes, unique, under 24 characters), a name as the syllabus words it, and its sub-topics (topics), each with its own unique key and name.",
         "- Use the syllabus's own headings. Leave out rationale, aims, outcomes codes, assessment advice, glossaries and front matter. Do not add topics that are not in the text.",
         "- examFormat: any exam structure the text states (section, marks, minutes); an empty list when it states none. Never guess.",
-        "- suggested: which of the app's presets (and profile, if one fits) suits this course, with a confidence from 0 to 1 and a one-sentence why."
+        "- suggested: which of the app's presets (and profile, if one fits) suits this course, with a confidence from 0 to 1 and a one-sentence why. A language other than English is languages; a practical, technology, design, arts or vocational course, or one that fits no preset well, is general."
       ]),
       inputs.spelling
     );
@@ -721,6 +721,7 @@ var CLASSIFY_SUBJECT_default = {
       lines([
         "- preset: one id from the list. profile: one of that preset's profile ids, or null.",
         "- Ignore year levels, exam board or school names and abbreviations in the name; judge the subject itself.",
+        "- Choose a specialised preset only when the subject is clearly that kind of subject and is examined that way. Any language other than English is languages. A practical, technology, design, arts or vocational subject, or anything else that fits no preset well, is general (with a profile when one fits). Never choose an essay or humanities preset for a subject just because it has written answers.",
         "- confidence from 0 to 1. Below 0.6 means the app will ask the student to choose."
       ]),
       inputs.spelling
