@@ -1,7 +1,13 @@
 # Cloudflare Pages settings. The site in dist/ is already built, so Cloudflare has nothing to compile:
 # it publishes dist/ and turns functions/api/* into the server addresses /api/<name>.
-# Keys and other settings go in the Cloudflare dashboard, never in this file.
+# Keys go in the Cloudflare dashboard as Secrets, never in this file. Plain settings go under [vars] below,
+# because Cloudflare takes them from this file.
 name = "plaeta"
 pages_build_output_dir = "dist"
 compatibility_date = "2026-09-01"
 compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# Which AI the app uses: "gemini" (free trial, key in the Secret GEMINI_API_KEY) or "anthropic" (Claude, key in the
+# Secret ANTHROPIC_API_KEY). To switch, change the word between the quote marks and commit.
+AI_PROVIDER = "gemini"
