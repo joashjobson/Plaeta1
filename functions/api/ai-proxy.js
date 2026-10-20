@@ -342,7 +342,7 @@ var TAG_TOPICS_default = {
 // app/ai/tasks/CHECK_ITEMS.js
 var fixes = { type: "object", properties: { label: S.str, marks: S.int, text: S.str, type: S.str } };
 var check = { type: "object", properties: { id: S.str, ok: S.bool, fixes, note: S.str, confidence: S.conf }, required: ["id", "ok"] };
-var FLAG_WORDS = { figure: "has a figure", cut: "may be cut off", "no-solution": "has no solution", marks: "marks may not fit the paper total", "low-confidence": "was read with low confidence", "matched-by-content": "its solution was matched by content, not label" };
+var FLAG_WORDS = { figure: "has a figure", cut: "may be cut off", "no-solution": "has no solution", marks: "marks may not fit the paper total", "low-confidence": "was read with low confidence", "matched-by-content": "its solution was matched by content, not label", "no-marks": "has no marks", "numbering-gap": "comes just after a missing question number, so its label may be misread", "part-order": "its parts are out of order or one is missing, so a label may be misread" };
 var CHECK_ITEMS_default = {
   name: "CHECK_ITEMS",
   route: routeOf("CHECK_ITEMS"),
@@ -1376,7 +1376,10 @@ var limits_default = {
     pagesPerBatchMixed: 6,
     maxTokensPerHaikuRequest: 8e4,
     maxImagesPerRequest: 20,
-    concurrency: 3
+    concurrency: 4,
+    aiCheck: true,
+    checkPerRequest: 10,
+    autoConfirm: true
   },
   syllabus: { maxFileMB: 40, maxPages: 200, maxCharsPerCall: 6e4 },
   library: { maxFileMB: 40, maxPages: 300, maxTextMB: 5, maxFilesPerSubject: 200 },
@@ -1486,6 +1489,14 @@ async function logModeration(db, owner, m, where) {
   }
 }
 
+// server/lib/ai-mode.js
+function aiMode(env = {}) {
+  const want = String(env.AI_PROVIDER || "").trim().toLowerCase();
+  const gemini = !!String(env.GEMINI_API_KEY || "").trim(), anthropic = !!String(env.ANTHROPIC_API_KEY || "").trim();
+  const provider = ["gemini", "anthropic"].includes(want) ? want : anthropic ? "anthropic" : gemini ? "gemini" : null;
+  return { provider, sharedGemini: provider === "gemini" && gemini };
+}
+
 // server/functions/ai-proxy.js
 var A4 = models_default.anthropic;
 var MAX_BODY = (A4.maxRequestMB || 32) * 1048576;
@@ -1517,6 +1528,7 @@ async function handler(req, ctx = {}) {
   const def = taskDef(task);
   if (!def) return fail(400, "blocked", "Unknown AI task.");
   if (!body.inputs || typeof body.inputs !== "object" || Array.isArray(body.inputs)) return fail(400, "blocked", "The task inputs are missing.");
+  if (aiMode(env).provider === "gemini") return fail(503, "no_key", "This site is set to use Gemini, not Claude. Choose Gemini in Settings.");
   const key = String(env.ANTHROPIC_API_KEY || "");
   if (!key) return fail(503, "no_key", "The AI server has no Anthropic key yet. The owner needs to add ANTHROPIC_API_KEY to the server settings (or the local .env file).");
   if (Date.now() < spendStopUntil) return fail(429, "spend_limit", "The AI spending limit for this month has been reached, so uploads and marking are paused. Your progress is kept.");

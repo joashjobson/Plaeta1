@@ -342,7 +342,10 @@ var limits_default = {
     pagesPerBatchMixed: 6,
     maxTokensPerHaikuRequest: 8e4,
     maxImagesPerRequest: 20,
-    concurrency: 3
+    concurrency: 4,
+    aiCheck: true,
+    checkPerRequest: 10,
+    autoConfirm: true
   },
   syllabus: { maxFileMB: 40, maxPages: 200, maxCharsPerCall: 6e4 },
   library: { maxFileMB: 40, maxPages: 300, maxTextMB: 5, maxFilesPerSubject: 200 },
@@ -502,7 +505,7 @@ var actions = {
     if (!price) throw new HttpError(501, "Payments for this plan are not set up yet.");
     const site = (d.env.SITE_URL || "").replace(/\/+$/, "");
     if (!site) throw new HttpError(501, "Payments are not set up yet.");
-    const s = await d.stripe.createCheckoutSession({ price, owner: user.id, planId: plan.id, successUrl: `${site}/#/settings`, cancelUrl: `${site}/#/plans` });
+    const s = await d.stripe.createCheckoutSession({ price, owner: user.id, planId: plan.id, successUrl: `${site}/app/#/settings`, cancelUrl: `${site}/app/#/plans` });
     return { url: s.url };
   },
   async pause(body, d, user) {

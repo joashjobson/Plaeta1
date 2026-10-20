@@ -267,7 +267,10 @@ var limits_default = {
     pagesPerBatchMixed: 6,
     maxTokensPerHaikuRequest: 8e4,
     maxImagesPerRequest: 20,
-    concurrency: 3
+    concurrency: 4,
+    aiCheck: true,
+    checkPerRequest: 10,
+    autoConfirm: true
   },
   syllabus: { maxFileMB: 40, maxPages: 200, maxCharsPerCall: 6e4 },
   library: { maxFileMB: 40, maxPages: 300, maxTextMB: 5, maxFilesPerSubject: 200 },
