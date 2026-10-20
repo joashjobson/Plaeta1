@@ -1,0 +1,9 @@
+{
+  "name": "plaeta",
+  "version": "5.2.0",
+  "private": true,
+  "description": "Plaeta, ready to put online. The site is already built; the build step only prints a message.",
+  "scripts": {
+    "build": "node -e \"console.log('Plaeta is already built. Publishing the dist folder.')\""
+  }
+}
