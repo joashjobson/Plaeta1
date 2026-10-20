@@ -1,0 +1,1 @@
+function o(e){if((e.existing||[]).length)return{areas:[],tags:(e.questions||[]).map(a=>({id:a.id,topic:e.existing[0].name}))};const t=["Simulated topic one","Simulated topic two"];return{areas:[{name:"Simulated area",topics:t.map(a=>({name:a}))}],tags:(e.questions||[]).map((a,i)=>({id:a.id,topic:t[i%2]}))}}export{o as default};

@@ -1,0 +1,1 @@
+const h=t=>String(t||"").toLowerCase().match(/[a-z0-9]+/g)||[];function i(t,e){const n=new Set(h(t)),r=[...new Set(h(e))].filter(o=>o.length>2);return r.length?r.filter(o=>n.has(o)).length/r.length:n.size?Math.min(1,n.size/30):0}function a(t){let e=7;for(const n of String(t||""))e=e*31+n.charCodeAt(0)>>>0;return e}export{a as hash,i as overlap,h as words};

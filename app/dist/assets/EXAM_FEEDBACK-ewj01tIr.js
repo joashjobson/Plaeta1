@@ -1,0 +1,1 @@
+const s=t=>({questions:(t.questions||[]).filter(e=>+e.got<+e.out).map(e=>({label:e.label,lost:"Simulated feedback: part of the reasoning was missing.",fix:"Simulated feedback: set out each step and say why it follows.",seen:!0})),improve:"Simulated feedback: show every step of your working. This is not real feedback."});export{s as default};
