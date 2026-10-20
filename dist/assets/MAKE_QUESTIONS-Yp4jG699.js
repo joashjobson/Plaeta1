@@ -1,0 +1,1 @@
+function o(a){const r=Math.max(1,Math.min(10,+a.count||3)),e=a.verb||(a.kind==="calc"?"calculate":"explain");return{questions:Array.from({length:r},(n,t)=>({text:`Simulated question ${t+1}: ${e} one idea from your material.`,marks:a.kind==="calc"?3:4,verb:e,answer:"Simulated answer: points drawn from your material."}))}}export{o as default};

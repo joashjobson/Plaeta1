@@ -1,0 +1,1 @@
+function o(n){return{checks:(n.items||[]).map(t=>{const e=!(t.marks>0);return{id:t.id,ok:!e,fixes:{},note:e?"Simulated check: no marks were found for this question. Read them from the paper.":"Simulated check: the question and its answer look consistent.",confidence:e?.5:.8}})}}export{o as default};
