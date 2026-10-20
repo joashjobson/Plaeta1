@@ -1,0 +1,1 @@
+import{words as t}from"./_util-lNrwrY13.js";function d(n){const l=new Set(t(n.name));let s=null,o=0;for(const e of n.presets||[]){const r=t([e.id,e.name,...e.aliases||[]].join(" ")).filter(a=>l.has(a)).length;r>o&&(o=r,s=e)}return{preset:(s||(n.presets||[]).find(e=>e.id==="general")||(n.presets||[])[0]||{id:"general"}).id,profile:null,confidence:s?.7:.3}}export{d as default};

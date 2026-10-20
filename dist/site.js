@@ -70,24 +70,4 @@
     }
     box.innerHTML = html;
   });
-
-  // Moons that orbit the big planet on a tilted path, passing behind it
-  var stage = document.querySelector('.stage');
-  if (stage) {
-    var moons = [].slice.call(stage.querySelectorAll('.moon'));
-    var tilt = -18 * Math.PI / 180, ct = Math.cos(tilt), st = Math.sin(tilt);
-    var place = function (t) {
-      var w = stage.clientWidth;
-      moons.forEach(function (m) {
-        var rx = +m.dataset.rx * w, ry = +m.dataset.ry * w, sp = +m.dataset.speed, a = +m.dataset.phase + t * sp;
-        var x = Math.cos(a) * rx, y = Math.sin(a) * ry;
-        var X = x * ct - y * st, Y = x * st + y * ct;
-        var front = Math.sin(a) > 0;
-        m.style.transform = 'translate(' + X.toFixed(1) + 'px,' + Y.toFixed(1) + 'px) scale(' + (front ? 1 : 0.86) + ')';
-        m.style.zIndex = front ? 3 : 1;
-      });
-    };
-    if (reduce) place(0);
-    else { var t0 = performance.now(); var loop = function (now) { place((now - t0) / 1000); requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
-  }
 })();

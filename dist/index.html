@@ -13,7 +13,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="preload" as="image" href="planet-hero.png">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -49,12 +48,8 @@
       <div class="note reveal d3"><span>Bring your own syllabus</span><span>Your papers stay private</span><span>Cancel any time</span></div>
     </div>
     <div class="stage" aria-hidden="true">
-      <svg class="orbit" viewBox="0 0 100 100"><g transform="rotate(-18 50 50)"><ellipse cx="50" cy="50" rx="47" ry="13"/><ellipse class="o2" cx="50" cy="50" rx="38" ry="9"/></g></svg>
       <div class="halo"></div>
-      <div class="sprite hero-planet" style="z-index:2"></div>
-      <svg class="orbit front" viewBox="0 0 100 100"><defs><clipPath id="ringfront"><rect x="0" y="50" width="100" height="50"/></clipPath></defs><g transform="rotate(-18 50 50)"><ellipse cx="50" cy="50" rx="47" ry="13" clip-path="url(#ringfront)"/><ellipse class="o2" cx="50" cy="50" rx="38" ry="9" clip-path="url(#ringfront)"/></g></svg>
-      <div class="moon" data-rx=".47" data-ry=".13" data-speed=".22" data-phase="0.6"><div class="sprite xs p-gj"></div></div>
-      <div class="moon" data-rx=".38" data-ry=".09" data-speed="-.31" data-phase="3.4"><div class="sprite xs p-io" style="--s:.7"></div></div>
+      <canvas class="hero-world" data-world width="260" height="260"></canvas>
     </div>
   </div>
 </section>
@@ -149,6 +144,7 @@
         <ul><li>Calculations and data questions</li><li>Explanations marked for key ideas</li><li>Practicals and depth studies</li></ul>
       </div>
     </div>
+    <p class="presets-more reveal d2">Any other subject works too. Languages get a vocabulary list and grammar notes. Subjects like Multimedia, Industrial Technology, Visual Arts and Music get the core tools: notes, flashcards and past papers marked to your criteria.</p>
   </div>
 </section>
 
@@ -248,5 +244,6 @@
 
 <script src="config.js"></script>
 <script src="site.js"></script>
+<script type="module" src="world.js"></script>
 </body>
 </html>

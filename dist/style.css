@@ -73,21 +73,15 @@ p{margin:0}
 .hero .note span::before{content:"";width:5px;height:5px;background:var(--sage)}
 @media (max-width:900px){.hero{padding-top:40px}.hero .wrap{grid-template-columns:1fr}.hero .stage{order:-1;margin:0 auto}}
 
-/* the planet stage with its orbit */
+/* the hero: Plaeta's own world and its moon, drawn live by world.js */
 .stage{position:relative;width:min(520px,92vw);aspect-ratio:1;display:grid;place-items:center}
-.stage .orbit{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.stage .orbit ellipse{fill:none;stroke:rgba(10,53,160,.28);stroke-width:1.2;vector-effect:non-scaling-stroke}
-.stage .orbit ellipse.o2{stroke:rgba(192,74,140,.24);stroke-dasharray:3 5}
-.stage .orbit.front{z-index:2;pointer-events:none}
-.moon{position:absolute;left:50%;top:50%;width:0;height:0}
-.moon .sprite{position:absolute;transform:translate(-50%,-50%)}
+.stage .hero-world{position:relative;width:100%;height:100%;image-rendering:pixelated;opacity:0;transition:opacity .8s ease;filter:drop-shadow(0 30px 40px rgba(10,53,160,.14))}
+.stage .hero-world.world-on{opacity:1}
 .halo{position:absolute;width:62%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,.95) 30%, rgba(228,235,252,.6) 55%, transparent 72%);filter:blur(4px)}
 
 /* sprite sheets: one row of frames, stepped through */
 .sprite{--s:2;width:calc(var(--w) * var(--s));height:calc(var(--w) * var(--s));background-image:var(--img);background-repeat:no-repeat;background-size:calc(var(--w) * var(--n) * var(--s)) auto;image-rendering:pixelated;animation:spin var(--dur,6s) steps(var(--n)) infinite}
 @keyframes spin{to{background-position-x:calc(var(--w) * var(--n) * var(--s) * -1)}}
-.sprite.hero-planet{--w:206px;--n:48;--dur:12s;--img:url(planet-hero.png);position:relative;filter:drop-shadow(0 30px 40px rgba(10,53,160,.14))}
-@media (max-width:560px){.sprite.hero-planet{--s:1.5}}
 .sprite.sm{--w:74px;--n:24;--dur:9s}
 .sprite.xs{--w:74px;--n:24;--dur:7s;--s:1}
 .p-io{--img:url(planet-io.png)} .p-europa{--img:url(planet-europa.png)} .p-titan{--img:url(planet-titan.png)} .p-pluto{--img:url(planet-pluto.png)}
@@ -151,13 +145,15 @@ section{position:relative}
 .crit .meter i.part{background:var(--amber)}
 .in .crit .meter i{width:var(--v)}
 .total{display:flex;align-items:baseline;gap:10px;padding-top:16px;border-top:1px dashed var(--line-2)}
-.total .big{font-family:var(--serif);font-size:44px;line-height:1}
+.total .big{font-size:38px;font-weight:700;line-height:1;letter-spacing:-.03em}
+.total .muted{font-size:15px}
 .total .ai{margin-left:auto;font-family:var(--mono);font-size:11.5px;background:var(--brand-soft);color:var(--brand-ink);padding:4px 9px;border-radius:6px}
 .fb{margin-top:16px;font-size:14px;color:var(--ink-2);background:#FFF8EE;border:1px solid #F3E2C8;border-radius:12px;padding:12px 14px}
 .fb b{color:var(--ink)}
 
 /* subject presets */
 .presets{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.presets-more{margin:26px auto 0;max-width:40em;text-align:center;color:var(--ink-2)}
 @media (max-width:1000px){.presets{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.presets{grid-template-columns:1fr}}
 .preset{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px 24px 28px;overflow:hidden;transition:transform .3s ease, box-shadow .3s ease, border-color .3s}
